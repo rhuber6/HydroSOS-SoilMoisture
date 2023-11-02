@@ -12,6 +12,12 @@ gdf = gpd.GeoDataFrame()
 for file_name in os.listdir(path_to_files):
     if file_name == "Ecuador.json":
         continue
+    if file_name == "combined.json":
+        continue
+    if file_name == "combined.geojson":
+        continue
+    if file_name == "Ecuador_regions.json":
+        continue
     if file_name.endswith(".json"):
         file_path = os.path.join(path_to_files, file_name)
         temp_gdf = gpd.read_file(file_path)

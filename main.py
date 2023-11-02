@@ -12,13 +12,13 @@ import matplotlib.patches as mpatches
 
 plt.ioff()  # Turn off interactive mode
 
-hist = pd.read_csv("/Users/rachel1/Downloads/Ecuador_soil_vals.csv")
-hist["date"] = pd.to_datetime(hist["date"], format="%m/%d/%y")
+hist = pd.read_csv("/Users/rachel1/Downloads/Ecuador_soil_vals_download.csv")
+hist["month"] = pd.to_datetime(hist["month"], format="%Y-%m-%d")
 
-area = gpd.read_file("/Users/rachel1/Documents/geojson_ecuador_simplified/Ecuador_regions.json")
-area.loc[11, "ADM1_ES"] = "Imbabura"
+area = gpd.read_file("/Users/rachel1/Documents/geojson_ecuador_simplified/combined.geojson")
+#area.loc[11, "ADM1_ES"] = "Imbabura"
 
-print(area)
+#print(area)
 
 startDate = datetime(2001, 1, 1)
 endDate = datetime(2023, 1, 1)
@@ -30,9 +30,9 @@ while current_date < endDate:
     month = current_date.month
     year = current_date.year
     for region in hist.columns:
-        if region == "date":
+        if region == "month":
             continue
-        hist_df = pd.DataFrame(hist.set_index("date")[region])
+        hist_df = pd.DataFrame(hist.set_index("month")[region])
         avg_df = hist_df.copy()
         avg_df = avg_df[avg_df.index.year >= 2001]
         avg_df = avg_df[avg_df.index.year <= 2020]
