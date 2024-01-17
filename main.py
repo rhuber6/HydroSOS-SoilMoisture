@@ -12,7 +12,7 @@ import matplotlib.patches as mpatches
 
 plt.ioff()  # Turn off interactive mode
 
-hist = pd.read_csv("/Users/rachel1/Downloads/Ecuador_soil_vals_download.csv")
+hist = pd.read_csv("/Users/rachel1/Downloads/Ecuador_precip.csv")
 hist["month"] = pd.to_datetime(hist["month"], format="%Y-%m-%d")
 
 area = gpd.read_file("/Users/rachel1/Documents/geojson_ecuador_simplified/combined.geojson")
@@ -96,7 +96,7 @@ while current_date < endDate:
 
     month_str = f"{month:02}"
 
-    plt.savefig(f'/Users/rachel1/Downloads/Ecuador_maps/Ecuador_{year}_{month_str}_soilMoist.png')
+    plt.savefig(f'/Users/rachel1/Downloads/Ecuador_maps/Ecuador_{year}_{month_str}_precip.png')
     plt.close()
     print(month_year)
 

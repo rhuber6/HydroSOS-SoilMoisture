@@ -12,7 +12,7 @@ import matplotlib.patches as mpatches
 
 plt.ioff()  # Turn off interactive mode
 
-hist = pd.read_csv("/Users/rachel1/Downloads/Ecuador_soil_vals_download.csv")
+hist = pd.read_csv("/Users/rachel1/Downloads/Ecuador_precip.csv")
 hist["month"] = pd.to_datetime(hist["month"], format="%Y-%m-%d")
 
 area = gpd.read_file("/Users/rachel1/Documents/geojson_ecuador_simplified/combined.geojson")
@@ -84,3 +84,4 @@ gdf['date'] = gdf['date'].dt.date.astype(str)
 # Convert the GeoDataFrame to GeoJSON
 geojson_to_map = gdf.to_json()
 
+print("finished")
